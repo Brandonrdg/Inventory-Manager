@@ -76,7 +76,7 @@
             dgvProductos.ReadOnly = true;
             dgvProductos.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
             dgvProductos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvProductos.Size = new Size(399, 102);
+            dgvProductos.Size = new Size(454, 102);
             dgvProductos.TabIndex = 4;
             dgvProductos.CellContentClick += dataGridView1_CellContentClick;
             // 
@@ -86,8 +86,8 @@
             button2.FlatAppearance.BorderColor = Color.FromArgb(203, 213, 225);
             button2.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             button2.ForeColor = Color.White;
-            button2.Location = new Point(12, 19);
-            button2.Margin = new Padding(20, 3, 20, 3);
+            button2.Location = new Point(12, 17);
+            button2.Margin = new Padding(40, 3, 40, 3);
             button2.Name = "button2";
             button2.Size = new Size(98, 30);
             button2.TabIndex = 5;
@@ -101,8 +101,8 @@
             button3.FlatAppearance.BorderColor = Color.FromArgb(203, 213, 225);
             button3.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             button3.ForeColor = Color.White;
-            button3.Location = new Point(139, 19);
-            button3.Margin = new Padding(20, 3, 20, 3);
+            button3.Location = new Point(190, 17);
+            button3.Margin = new Padding(40, 3, 40, 3);
             button3.Name = "button3";
             button3.Size = new Size(98, 30);
             button3.TabIndex = 6;
@@ -116,8 +116,8 @@
             button4.FlatAppearance.BorderColor = Color.FromArgb(203, 213, 225);
             button4.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             button4.ForeColor = Color.White;
-            button4.Location = new Point(266, 19);
-            button4.Margin = new Padding(20, 3, 20, 3);
+            button4.Location = new Point(368, 17);
+            button4.Margin = new Padding(40, 3, 40, 3);
             button4.Name = "button4";
             button4.Size = new Size(98, 30);
             button4.TabIndex = 7;
@@ -153,7 +153,7 @@
             panelSuperior.Dock = DockStyle.Top;
             panelSuperior.Location = new Point(0, 0);
             panelSuperior.Name = "panelSuperior";
-            panelSuperior.Size = new Size(436, 70);
+            panelSuperior.Size = new Size(621, 70);
             panelSuperior.TabIndex = 10;
             // 
             // panelContenido
@@ -166,7 +166,7 @@
             panelContenido.Dock = DockStyle.Fill;
             panelContenido.Location = new Point(0, 70);
             panelContenido.Name = "panelContenido";
-            panelContenido.Size = new Size(436, 340);
+            panelContenido.Size = new Size(621, 316);
             panelContenido.TabIndex = 11;
             // 
             // panel1
@@ -177,9 +177,9 @@
             panel1.Controls.Add(button3);
             panel1.Controls.Add(button2);
             panel1.Dock = DockStyle.Bottom;
-            panel1.Location = new Point(0, 238);
+            panel1.Location = new Point(0, 214);
             panel1.Name = "panel1";
-            panel1.Size = new Size(436, 102);
+            panel1.Size = new Size(621, 102);
             panel1.TabIndex = 10;
             // 
             // panel2
@@ -191,7 +191,7 @@
             panel2.Dock = DockStyle.Bottom;
             panel2.Location = new Point(0, 71);
             panel2.Name = "panel2";
-            panel2.Size = new Size(436, 31);
+            panel2.Size = new Size(621, 31);
             panel2.TabIndex = 8;
             // 
             // lblValorInventario
@@ -229,7 +229,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(248, 241, 252);
-            ClientSize = new Size(436, 410);
+            ClientSize = new Size(621, 386);
             Controls.Add(panelContenido);
             Controls.Add(panelSuperior);
             FormBorderStyle = FormBorderStyle.FixedSingle;
