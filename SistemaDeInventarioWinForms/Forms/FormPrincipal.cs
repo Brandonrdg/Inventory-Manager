@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SistemaDeInventarioWinForms.Forms;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,15 +17,44 @@ namespace SistemaDeInventarioWinForms
         {
             dgvProductos.DataSource = inventario.ObtenerProductos();
 
-            lblProductos.Text = $"📦Productos: {inventario.ObtenerCantidadProductos()}";
-            lblStock.Text = $"📊Stock Total: {inventario.ObtenerStockTotal()}";
-            lblValor.Text = $"💰Valor Total: ${inventario.ObtenerValorTotalInventario():N2}";
+            lblProductos.Text = $"Productos: {inventario.ObtenerCantidadProductos()}";
+            lblStock.Text = $"Stock Total: {inventario.ObtenerStockTotal()}";
+            lblValor.Text = $"Valor Total: ${inventario.ObtenerValorTotalInventario():N2}";
         }
         public FormPrincipal()
         {
             InitializeComponent();
 
+            ConfigurarTemaDataGrid();
+
             CargarProductos();
+        }
+        private void ConfigurarTemaDataGrid()
+        {
+            dgvProductos.ThemeStyle.BackColor = Color.FromArgb(24, 24, 27);
+
+            // Encabezado
+            dgvProductos.ThemeStyle.HeaderStyle.BackColor = Color.FromArgb(39, 39, 42);
+            dgvProductos.ThemeStyle.HeaderStyle.ForeColor = Color.White;
+            dgvProductos.ThemeStyle.HeaderStyle.Font =
+                new Font("Segoe UI", 10, FontStyle.Bold);
+            dgvProductos.ThemeStyle.HeaderStyle.Height = 45;
+
+            // Filas
+            dgvProductos.ThemeStyle.RowsStyle.BackColor = Color.FromArgb(24, 24, 27);
+            dgvProductos.ThemeStyle.RowsStyle.ForeColor = Color.White;
+            dgvProductos.ThemeStyle.RowsStyle.SelectionBackColor =
+                Color.FromArgb(37, 99, 235);
+            dgvProductos.ThemeStyle.RowsStyle.SelectionForeColor = Color.White;
+            dgvProductos.ThemeStyle.RowsStyle.Font =
+                new Font("Segoe UI", 10);
+            dgvProductos.ThemeStyle.RowsStyle.Height = 42;
+
+            // Filas alternas
+            dgvProductos.ThemeStyle.AlternatingRowsStyle.BackColor =
+                Color.FromArgb(32, 32, 36);
+
+            dgvProductos.GridColor = Color.FromArgb(63, 63, 70);
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -50,7 +80,7 @@ namespace SistemaDeInventarioWinForms
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            FormAgregarProductos formulario = new FormAgregarProductos();
+            FormAgregarProductosModerno formulario = new FormAgregarProductosModerno();
             formulario.ShowDialog();
             CargarProductos();
         }
@@ -72,9 +102,8 @@ namespace SistemaDeInventarioWinForms
                 return;
             }
 
-            FormActualizarProductos formulario = new FormActualizarProductos(producto);
+            FormActualizarProductosModerno formulario = new FormActualizarProductosModerno(producto);
             formulario.ShowDialog();
-
             CargarProductos();
         }
 
@@ -95,7 +124,7 @@ namespace SistemaDeInventarioWinForms
                 return;
             }
 
-            FormEliminarProducto formulario = new FormEliminarProducto(producto);
+            FormEliminarModerno formulario = new FormEliminarModerno(producto);
             formulario.ShowDialog();
 
             CargarProductos();
