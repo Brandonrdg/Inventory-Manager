@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace SistemaDeInventarioWinForms
 {
-    public partial class Form1 : Form
+    public partial class FormDisenoClasico : Form
     {
         public Inventario inventario = new Inventario();
 
@@ -15,7 +15,7 @@ namespace SistemaDeInventarioWinForms
             lblCantidad.Text = $"📊Stock Total: {inventario.ObtenerStockTotal()}";
             lblValorInventario.Text = $"💰Valor Total: ${inventario.ObtenerValorTotalInventario():N2}";
         }
-        public Form1()
+        public FormDisenoClasico()
         {
             InitializeComponent();
 
@@ -37,15 +37,10 @@ namespace SistemaDeInventarioWinForms
 
         }
 
-        private void txtBuscar_TextChanged(object sender, EventArgs e)
-        {
-            inventario.BuscarProductos(txtBuscar.Text);
-            dgvProductos.DataSource = inventario.BuscarProductos(txtBuscar.Text);
-        }
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-           
+
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
@@ -77,7 +72,7 @@ namespace SistemaDeInventarioWinForms
 
             CargarProductos();
         }
-       
+
         private void btnEliminar_Click(object sender, EventArgs e)
         {
             if (dgvProductos.SelectedRows.Count == 0)
@@ -109,6 +104,11 @@ namespace SistemaDeInventarioWinForms
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void guna2TextBox1_TextChanged(object sender, EventArgs e)
+        {
+       
         }
     }
 }
