@@ -35,9 +35,16 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormActualizarProductosModerno));
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges15 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             guna2HtmlLabel3 = new Guna.UI2.WinForms.Guna2HtmlLabel();
@@ -47,6 +54,15 @@
             txtPrecio = new Guna.UI2.WinForms.Guna2TextBox();
             btnCancelar = new Guna.UI2.WinForms.Guna2Button();
             btnActualizar = new Guna.UI2.WinForms.Guna2Button();
+            guna2Panel4 = new Guna.UI2.WinForms.Guna2Panel();
+            label1 = new Label();
+            guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            label2 = new Label();
+            guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
+            label3 = new Label();
+            guna2Panel4.SuspendLayout();
+            guna2Panel1.SuspendLayout();
+            guna2Panel2.SuspendLayout();
             SuspendLayout();
             // 
             // guna2HtmlLabel1
@@ -54,7 +70,7 @@
             guna2HtmlLabel1.BackColor = Color.Transparent;
             guna2HtmlLabel1.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
             guna2HtmlLabel1.ForeColor = Color.FromArgb(250, 250, 250);
-            guna2HtmlLabel1.Location = new Point(156, 12);
+            guna2HtmlLabel1.Location = new Point(148, 3);
             guna2HtmlLabel1.Name = "guna2HtmlLabel1";
             guna2HtmlLabel1.Size = new Size(60, 32);
             guna2HtmlLabel1.TabIndex = 0;
@@ -66,7 +82,7 @@
             guna2HtmlLabel2.BorderStyle = BorderStyle.FixedSingle;
             guna2HtmlLabel2.Font = new Font("Segoe UI", 14F);
             guna2HtmlLabel2.ForeColor = Color.FromArgb(161, 161, 170);
-            guna2HtmlLabel2.Location = new Point(12, 75);
+            guna2HtmlLabel2.Location = new Point(7, 26);
             guna2HtmlLabel2.Margin = new Padding(3, 3, 20, 20);
             guna2HtmlLabel2.Name = "guna2HtmlLabel2";
             guna2HtmlLabel2.Size = new Size(74, 29);
@@ -79,7 +95,7 @@
             guna2HtmlLabel3.BorderStyle = BorderStyle.FixedSingle;
             guna2HtmlLabel3.Font = new Font("Segoe UI", 14F);
             guna2HtmlLabel3.ForeColor = Color.FromArgb(161, 161, 170);
-            guna2HtmlLabel3.Location = new Point(12, 125);
+            guna2HtmlLabel3.Location = new Point(7, 78);
             guna2HtmlLabel3.Margin = new Padding(3, 3, 20, 20);
             guna2HtmlLabel3.Name = "guna2HtmlLabel3";
             guna2HtmlLabel3.Size = new Size(81, 29);
@@ -92,7 +108,7 @@
             guna2HtmlLabel4.BorderStyle = BorderStyle.FixedSingle;
             guna2HtmlLabel4.Font = new Font("Segoe UI", 14F);
             guna2HtmlLabel4.ForeColor = Color.FromArgb(161, 161, 170);
-            guna2HtmlLabel4.Location = new Point(12, 175);
+            guna2HtmlLabel4.Location = new Point(7, 130);
             guna2HtmlLabel4.Margin = new Padding(3, 3, 20, 20);
             guna2HtmlLabel4.Name = "guna2HtmlLabel4";
             guna2HtmlLabel4.Size = new Size(58, 29);
@@ -114,7 +130,7 @@
             txtNombre.Font = new Font("Segoe UI", 11F);
             txtNombre.ForeColor = Color.White;
             txtNombre.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtNombre.Location = new Point(134, 75);
+            txtNombre.Location = new Point(119, 26);
             txtNombre.Margin = new Padding(3, 4, 3, 4);
             txtNombre.Name = "txtNombre";
             txtNombre.PlaceholderForeColor = Color.FromArgb(161, 161, 170);
@@ -139,7 +155,7 @@
             txtCantidad.Font = new Font("Segoe UI", 11F);
             txtCantidad.ForeColor = Color.White;
             txtCantidad.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtCantidad.Location = new Point(134, 125);
+            txtCantidad.Location = new Point(119, 78);
             txtCantidad.Margin = new Padding(3, 4, 3, 4);
             txtCantidad.Name = "txtCantidad";
             txtCantidad.PlaceholderForeColor = Color.FromArgb(161, 161, 170);
@@ -164,7 +180,7 @@
             txtPrecio.Font = new Font("Segoe UI", 11F);
             txtPrecio.ForeColor = Color.White;
             txtPrecio.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtPrecio.Location = new Point(134, 175);
+            txtPrecio.Location = new Point(119, 130);
             txtPrecio.Margin = new Padding(3, 4, 3, 4);
             txtPrecio.Name = "txtPrecio";
             txtPrecio.PlaceholderForeColor = Color.FromArgb(161, 161, 170);
@@ -186,11 +202,12 @@
             btnCancelar.Font = new Font("Segoe UI", 10F);
             btnCancelar.ForeColor = Color.White;
             btnCancelar.HoverState.FillColor = Color.FromArgb(185, 28, 28);
-            btnCancelar.Location = new Point(198, 252);
+            btnCancelar.Image = (Image)resources.GetObject("btnCancelar.Image");
+            btnCancelar.Location = new Point(195, 8);
             btnCancelar.Margin = new Padding(30);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.ShadowDecoration.CustomizableEdges = customizableEdges8;
-            btnCancelar.Size = new Size(174, 30);
+            btnCancelar.Size = new Size(150, 30);
             btnCancelar.TabIndex = 8;
             btnCancelar.Text = "Cancelar";
             btnCancelar.Click += btnCancelar_Click;
@@ -207,14 +224,93 @@
             btnActualizar.Font = new Font("Segoe UI", 10F);
             btnActualizar.ForeColor = Color.White;
             btnActualizar.HoverState.FillColor = Color.Lime;
-            btnActualizar.Location = new Point(12, 252);
+            btnActualizar.Image = (Image)resources.GetObject("btnActualizar.Image");
+            btnActualizar.Location = new Point(7, 8);
             btnActualizar.Margin = new Padding(30);
             btnActualizar.Name = "btnActualizar";
             btnActualizar.ShadowDecoration.CustomizableEdges = customizableEdges10;
-            btnActualizar.Size = new Size(174, 30);
+            btnActualizar.Size = new Size(150, 30);
             btnActualizar.TabIndex = 7;
             btnActualizar.Text = "Actualizar";
             btnActualizar.Click += btnActualizar_Click_1;
+            // 
+            // guna2Panel4
+            // 
+            guna2Panel4.BackColor = Color.FromArgb(39, 39, 42);
+            guna2Panel4.Controls.Add(label1);
+            guna2Panel4.Controls.Add(guna2HtmlLabel1);
+            guna2Panel4.CustomizableEdges = customizableEdges11;
+            guna2Panel4.Location = new Point(12, 12);
+            guna2Panel4.Name = "guna2Panel4";
+            guna2Panel4.ShadowDecoration.CustomizableEdges = customizableEdges12;
+            guna2Panel4.Size = new Size(360, 44);
+            guna2Panel4.TabIndex = 12;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.BackColor = Color.FromArgb(39, 39, 42);
+            label1.Font = new Font("Segoe UI", 6F, FontStyle.Bold);
+            label1.ForeColor = SystemColors.ButtonHighlight;
+            label1.Location = new Point(783, 6);
+            label1.Name = "label1";
+            label1.Size = new Size(21, 11);
+            label1.TabIndex = 10;
+            label1.Text = "v1.0";
+            // 
+            // guna2Panel1
+            // 
+            guna2Panel1.BackColor = Color.FromArgb(39, 39, 42);
+            guna2Panel1.Controls.Add(label2);
+            guna2Panel1.Controls.Add(guna2HtmlLabel2);
+            guna2Panel1.Controls.Add(txtNombre);
+            guna2Panel1.Controls.Add(guna2HtmlLabel3);
+            guna2Panel1.Controls.Add(txtPrecio);
+            guna2Panel1.Controls.Add(txtCantidad);
+            guna2Panel1.Controls.Add(guna2HtmlLabel4);
+            guna2Panel1.CustomizableEdges = customizableEdges13;
+            guna2Panel1.Location = new Point(12, 62);
+            guna2Panel1.Name = "guna2Panel1";
+            guna2Panel1.ShadowDecoration.CustomizableEdges = customizableEdges14;
+            guna2Panel1.Size = new Size(360, 179);
+            guna2Panel1.TabIndex = 13;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.BackColor = Color.FromArgb(39, 39, 42);
+            label2.Font = new Font("Segoe UI", 6F, FontStyle.Bold);
+            label2.ForeColor = SystemColors.ButtonHighlight;
+            label2.Location = new Point(783, 6);
+            label2.Name = "label2";
+            label2.Size = new Size(21, 11);
+            label2.TabIndex = 10;
+            label2.Text = "v1.0";
+            // 
+            // guna2Panel2
+            // 
+            guna2Panel2.BackColor = Color.FromArgb(24, 24, 27);
+            guna2Panel2.Controls.Add(label3);
+            guna2Panel2.Controls.Add(btnActualizar);
+            guna2Panel2.Controls.Add(btnCancelar);
+            guna2Panel2.CustomizableEdges = customizableEdges15;
+            guna2Panel2.Location = new Point(12, 244);
+            guna2Panel2.Name = "guna2Panel2";
+            guna2Panel2.ShadowDecoration.CustomizableEdges = customizableEdges16;
+            guna2Panel2.Size = new Size(357, 43);
+            guna2Panel2.TabIndex = 13;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.BackColor = Color.FromArgb(39, 39, 42);
+            label3.Font = new Font("Segoe UI", 6F, FontStyle.Bold);
+            label3.ForeColor = SystemColors.ButtonHighlight;
+            label3.Location = new Point(783, 6);
+            label3.Name = "label3";
+            label3.Size = new Size(21, 11);
+            label3.TabIndex = 10;
+            label3.Text = "v1.0";
             // 
             // FormActualizarProductosModerno
             // 
@@ -222,20 +318,20 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(63, 63, 70);
             ClientSize = new Size(384, 299);
-            Controls.Add(btnCancelar);
-            Controls.Add(btnActualizar);
-            Controls.Add(txtPrecio);
-            Controls.Add(txtCantidad);
-            Controls.Add(txtNombre);
-            Controls.Add(guna2HtmlLabel4);
-            Controls.Add(guna2HtmlLabel3);
-            Controls.Add(guna2HtmlLabel2);
-            Controls.Add(guna2HtmlLabel1);
+            Controls.Add(guna2Panel2);
+            Controls.Add(guna2Panel1);
+            Controls.Add(guna2Panel4);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "FormActualizarProductosModerno";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "FormActualizarProductosModerno";
+            Text = "Actualizar";
+            guna2Panel4.ResumeLayout(false);
+            guna2Panel4.PerformLayout();
+            guna2Panel1.ResumeLayout(false);
+            guna2Panel1.PerformLayout();
+            guna2Panel2.ResumeLayout(false);
+            guna2Panel2.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -249,5 +345,11 @@
         private Guna.UI2.WinForms.Guna2TextBox txtPrecio;
         private Guna.UI2.WinForms.Guna2Button btnCancelar;
         private Guna.UI2.WinForms.Guna2Button btnActualizar;
+        private Guna.UI2.WinForms.Guna2Panel guna2Panel4;
+        private Label label1;
+        private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
+        private Label label2;
+        private Guna.UI2.WinForms.Guna2Panel guna2Panel2;
+        private Label label3;
     }
 }

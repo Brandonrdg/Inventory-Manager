@@ -15,12 +15,80 @@ namespace SistemaDeInventarioWinForms
 
         private void CargarProductos()
         {
-            dgvProductos.DataSource = inventario.ObtenerProductos();
+            var productos = inventario.ObtenerProductos();
 
-            lblProductos.Text = $"Productos: {inventario.ObtenerCantidadProductos()}";
-            lblStock.Text = $"Stock Total: {inventario.ObtenerStockTotal()}";
-            lblValor.Text = $"Valor Total: ${inventario.ObtenerValorTotalInventario():N2}";
+            dgvProductos.DataSource = productos;
+
+            dgvProductos.Columns["Id"].Visible = false;
+
+            dgvProductos.CellFormatting += DgvProductos_CellFormatting;
+
+            dgvProductos.Columns["Cantidad"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvProductos.Columns["Precio"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+
+            dgvProductos.Columns["Nombre"].FillWeight = 55;
+
+            dgvProductos.Columns["Cantidad"].FillWeight = 20;
+
+            dgvProductos.Columns["Precio"].FillWeight = 25;
+
+            dgvProductos.Columns["Nombre"].HeaderText = "Producto";
+            dgvProductos.Columns["Cantidad"].HeaderText = "Stock";
+            dgvProductos.Columns["Precio"].HeaderText = "Precio";
+
+
+            lblProductos.Text = $"Productos:";
+            lblTotal.Text = productos.Count.ToString();
+            lblStock.Text = $"Stock Total:";
+            lblStockTotal.Text = productos.Sum(p => p.Cantidad).ToString();
+            lblValor.Text = $"Valor Total:";
+            decimal ValorTotal = productos.Sum(p => p.Cantidad * p.Precio);
+            lblValorTotal.Text = $"₡{ValorTotal:N0}";
+
         }
+
+        private void DgvProductos_CellFormatting(object? sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (dgvProductos.Columns[e.ColumnIndex].Name == "Precio" && e.Value != null)
+            {
+                // Si el origen de datos ya proporciona un decimal, formatear directamente.
+                if (e.Value is decimal precioDecimal)
+                {
+                    e.Value = $"₡{precioDecimal:N0}";
+                    e.FormattingApplied = true;
+                    return;
+                }
+
+                // Intentar convertir valores no nulos de forma segura.
+                // Primero intentar Convert (maneja tipos numéricos), y si falla, intentar parsear cadenas estilo moneda.
+                try
+                {
+                    decimal precio = Convert.ToDecimal(e.Value);
+                    e.Value = $"₡{precio:N0}";
+                    e.FormattingApplied = true;
+                    return;
+                }
+                catch (FormatException)
+                {
+                    // Podría ser una cadena ya formateada con símbolo de moneda (ej. "₡44 000").
+                    if (decimal.TryParse(
+                        e.Value.ToString(),
+                        System.Globalization.NumberStyles.Currency,
+                        System.Globalization.CultureInfo.CurrentCulture,
+                        out decimal parsed))
+                    {
+                        e.Value = $"₡{parsed:N0}";
+                        e.FormattingApplied = true;
+                        return;
+                    }
+                }
+                catch
+                {
+                    // En cualquier otro fallo, no modificar e.Value para evitar excepción.
+                }
+            }
+        }
+
         public FormPrincipal()
         {
             InitializeComponent();
@@ -28,9 +96,11 @@ namespace SistemaDeInventarioWinForms
             ConfigurarTemaDataGrid();
 
             CargarProductos();
+
         }
         private void ConfigurarTemaDataGrid()
         {
+
             dgvProductos.ThemeStyle.BackColor = Color.FromArgb(24, 24, 27);
 
             // Encabezado
@@ -44,7 +114,7 @@ namespace SistemaDeInventarioWinForms
             dgvProductos.ThemeStyle.RowsStyle.BackColor = Color.FromArgb(24, 24, 27);
             dgvProductos.ThemeStyle.RowsStyle.ForeColor = Color.White;
             dgvProductos.ThemeStyle.RowsStyle.SelectionBackColor =
-                Color.FromArgb(37, 99, 235);
+                Color.FromArgb(30, 58, 95);
             dgvProductos.ThemeStyle.RowsStyle.SelectionForeColor = Color.White;
             dgvProductos.ThemeStyle.RowsStyle.Font =
                 new Font("Segoe UI", 10);
@@ -55,6 +125,7 @@ namespace SistemaDeInventarioWinForms
                 Color.FromArgb(32, 32, 36);
 
             dgvProductos.GridColor = Color.FromArgb(63, 63, 70);
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -151,6 +222,32 @@ namespace SistemaDeInventarioWinForms
             dgvProductos.DataSource = string.IsNullOrWhiteSpace(filtro)
                 ? inventario.ObtenerProductos()
                 : inventario.BuscarProductos(filtro);
+        }
+
+        private void lblProductos_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblValor_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TxtVersion_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblStockTotal_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FormPrincipal_Shown(object sender, EventArgs e)
+        {
+            dgvProductos.ClearSelection();
+            dgvProductos.CurrentCell = null;
         }
     }
 }

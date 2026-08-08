@@ -43,15 +43,15 @@ namespace SistemaDeInventarioWinForms.Forms
                 return;
             }
 
-            if (!int.TryParse(cantidadText, out int cantidad))
+            if (!int.TryParse(cantidadText, out int cantidad) || cantidad < 0)
             {
-                MessageBox.Show("La cantidad debe ser un número entero.");
+                MessageBox.Show("La cantidad debe ser un número entero positivo igual o mayor a 0.");
                 return;
             }
 
-            if (!float.TryParse(precioText, out float precio))
+            if (!float.TryParse(precioText, out float precio) || precio <= 0)
             {
-                MessageBox.Show("El precio debe ser un número decimal.");
+                MessageBox.Show("El precio debe ser un número mayor a 0.");
                 return;
             }
 
