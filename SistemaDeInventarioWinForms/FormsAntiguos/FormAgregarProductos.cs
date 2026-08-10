@@ -34,7 +34,7 @@ namespace SistemaDeInventarioWinForms
                 return;
             }
 
-            if (!float.TryParse(precioText, out float precio) || precio < 0f)
+            if (!decimal.TryParse(precioText, out decimal precio) || precio < 0m)
             {
                 MessageBox.Show("Por favor, ingrese un precio válido mayor o igual a 0.");
                 return;

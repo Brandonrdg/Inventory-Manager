@@ -2,8 +2,6 @@
 {
     partial class FormPrincipal
     {
-        private const string V = "Inventory Manager";
-        private const string V1 = "InventoryManage";
 
         /// <summary>
         /// Required designer variable.
@@ -110,7 +108,7 @@
             TxtVersion.Size = new Size(21, 11);
             TxtVersion.TabIndex = 10;
             TxtVersion.Text = "v1.0";
-            TxtVersion.Click += TxtVersion_Click;
+
             // 
             // Tittle
             // 
@@ -342,7 +340,7 @@
             lblValor.TabIndex = 5;
             lblValor.Text = "Buscar";
             lblValor.TextAlignment = ContentAlignment.MiddleCenter;
-            lblValor.Click += lblValor_Click;
+
             // 
             // guna2Panel2
             // 
@@ -371,7 +369,7 @@
             lblStockTotal.TabIndex = 7;
             lblStockTotal.Text = "Total";
             lblStockTotal.TextAlignment = ContentAlignment.MiddleCenter;
-            lblStockTotal.Click += lblStockTotal_Click;
+
             // 
             // lblStock
             // 
@@ -426,7 +424,7 @@
             lblProductos.TabIndex = 3;
             lblProductos.Text = "Buscar";
             lblProductos.TextAlignment = ContentAlignment.MiddleCenter;
-            lblProductos.Click += lblProductos_Click;
+
             // 
             // FormPrincipal
             // 

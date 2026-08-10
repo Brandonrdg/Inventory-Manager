@@ -1,15 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Reflection.Metadata.Ecma335;
 using Microsoft.Data.Sqlite;
 public class Inventario
 {
-    private BaseDatos db = new BaseDatos();
+    private readonly BaseDatos db = new BaseDatos();
 
 
     //Método para agregar un producto a la base de datos
-    public void AgregarProducto(string nombre, int cantidad, float precio)
+    public void AgregarProducto(string nombre, int cantidad, decimal precio)
     {
         using (var conexion = db.ObtenerConexion())
         {
@@ -28,7 +26,7 @@ public class Inventario
         }
     }
     //Metodo para actualizar producto
-    public void ActualizarProducto(string nombre, int cantidad, float precio, int id)
+    public void ActualizarProducto(string nombre, int cantidad, decimal precio, int id)
     {
 
         using (var conexion = db.ObtenerConexion())
@@ -128,17 +126,5 @@ public class Inventario
         }
 
         return null;
-    }
-    public int ObtenerCantidadProductos() 
-    {
-        return ObtenerProductos().Count;
-    }
-    public int ObtenerStockTotal()
-    {
-       return ObtenerProductos().Sum(p => p.Cantidad);
-    }
-    public decimal ObtenerValorTotalInventario()
-    {
-        return ObtenerProductos().Sum(p => p.Cantidad * p.Precio);
     }
 }

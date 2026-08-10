@@ -3,16 +3,15 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 
 namespace SistemaDeInventarioWinForms.Forms
 {
     public partial class FormActualizarProductosModerno : Form
     {
-        private Inventario inventario = new Inventario();
+        private readonly Inventario inventario = new Inventario();
 
-        private Producto producto;
+        private readonly Producto producto;
         public FormActualizarProductosModerno(Producto producto)
         {
             InitializeComponent();
@@ -24,12 +23,6 @@ namespace SistemaDeInventarioWinForms.Forms
             txtPrecio.Text = producto.Precio.ToString();
 
         }
-
-        private void txtNombre_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnActualizar_Click_1(object sender, EventArgs e)
         {
 
@@ -49,7 +42,7 @@ namespace SistemaDeInventarioWinForms.Forms
                 return;
             }
 
-            if (!float.TryParse(precioText, out float precio) || precio <= 0)
+            if (!decimal.TryParse(precioText, out decimal precio) || precio <= 0)
             {
                 MessageBox.Show("El precio debe ser un número mayor a 0.");
                 return;
@@ -57,6 +50,7 @@ namespace SistemaDeInventarioWinForms.Forms
 
             inventario.ActualizarProducto(nombre, cantidad, precio, producto.Id);
             MessageBox.Show("Producto actualizado correctamente.");
+            DialogResult = DialogResult.OK;
             this.Close();
         }
 

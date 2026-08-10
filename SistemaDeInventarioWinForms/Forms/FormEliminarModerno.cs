@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 
 namespace SistemaDeInventarioWinForms.Forms
@@ -17,7 +16,7 @@ namespace SistemaDeInventarioWinForms.Forms
             InitializeComponent();
 
             this.producto = producto;
-
+            
             CargarProducto();
 
             ConfigurarTemaDataGridView();
@@ -63,58 +62,25 @@ namespace SistemaDeInventarioWinForms.Forms
         {
             DialogResult respuesta = MessageBox.Show("Estas seguro que deseas eliminar este producto?",
                "Confirmacion", MessageBoxButtons.OKCancel);
-            inventario.EliminarProducto(producto);
-            Close();
+            if (respuesta == DialogResult.OK)
+            {
+                inventario.EliminarProducto(producto);
+
+                DialogResult = DialogResult.OK;
+                Close();
+            }
         }
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-
-        private void Tittle_Click(object sender, EventArgs e)
-        {
-
-        }
         private void DgvProductos_CellFormatting(object? sender, DataGridViewCellFormattingEventArgs e)
         {
-            if (dgvProductoEliminar.Columns[e.ColumnIndex].Name == "Precio" && e.Value != null)
+            if (dgvProductoEliminar.Columns[e.ColumnIndex].Name == "Precio" && e.Value is decimal precio)
             {
-                // Si el origen de datos ya proporciona un decimal, formatear directamente.
-                if (e.Value is decimal precioDecimal)
-                {
-                    e.Value = $"₡{precioDecimal:N0}";
-                    e.FormattingApplied = true;
-                    return;
-                }
-
-                // Intentar convertir valores no nulos de forma segura.
-                // Primero intentar Convert (maneja tipos numéricos), y si falla, intentar parsear cadenas estilo moneda.
-                try
-                {
-                    decimal precio = Convert.ToDecimal(e.Value);
-                    e.Value = $"₡{precio:N0}";
-                    e.FormattingApplied = true;
-                    return;
-                }
-                catch (FormatException)
-                {
-                    // Podría ser una cadena ya formateada con símbolo de moneda (ej. "₡44 000").
-                    if (decimal.TryParse(
-                        e.Value.ToString(),
-                        System.Globalization.NumberStyles.Currency,
-                        System.Globalization.CultureInfo.CurrentCulture,
-                        out decimal parsed))
-                    {
-                        e.Value = $"₡{parsed:N0}";
-                        e.FormattingApplied = true;
-                        return;
-                    }
-                }
-                catch
-                {
-                    // En cualquier otro fallo, no modificar e.Value para evitar excepción.
-                }
+                e.Value = $"₡{precio:N0}";
+                e.FormattingApplied = true;
             }
         }
     }

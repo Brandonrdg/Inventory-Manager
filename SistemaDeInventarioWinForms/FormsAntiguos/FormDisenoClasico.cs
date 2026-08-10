@@ -7,19 +7,11 @@ namespace SistemaDeInventarioWinForms
     {
         public Inventario inventario = new Inventario();
 
-        private void CargarProductos()
-        {
-            dgvProductos.DataSource = inventario.ObtenerProductos();
-
-            lblProductos.Text = $"📦Productos: {inventario.ObtenerCantidadProductos()}";
-            lblCantidad.Text = $"📊Stock Total: {inventario.ObtenerStockTotal()}";
-            lblValorInventario.Text = $"💰Valor Total: ${inventario.ObtenerValorTotalInventario():N2}";
-        }
         public FormDisenoClasico()
         {
             InitializeComponent();
 
-            CargarProductos();
+            
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -47,7 +39,7 @@ namespace SistemaDeInventarioWinForms
         {
             FormAgregarProductos formulario = new FormAgregarProductos();
             formulario.ShowDialog();
-            CargarProductos();
+            
         }
         private void btnActualizar_Click(object sender, EventArgs e)
         {
@@ -70,7 +62,7 @@ namespace SistemaDeInventarioWinForms
             FormActualizarProductos formulario = new FormActualizarProductos(producto);
             formulario.ShowDialog();
 
-            CargarProductos();
+            
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
@@ -93,7 +85,7 @@ namespace SistemaDeInventarioWinForms
             FormEliminarProducto formulario = new FormEliminarProducto(producto);
             formulario.ShowDialog();
 
-            CargarProductos();
+            
         }
 
         private void button5_Click(object sender, EventArgs e)

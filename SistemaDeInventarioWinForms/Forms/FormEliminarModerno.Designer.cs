@@ -112,7 +112,6 @@
             Tittle.Size = new Size(83, 32);
             Tittle.TabIndex = 1;
             Tittle.Text = "Eliminar";
-            Tittle.Click += Tittle_Click;
             // 
             // btnEliminar
             // 

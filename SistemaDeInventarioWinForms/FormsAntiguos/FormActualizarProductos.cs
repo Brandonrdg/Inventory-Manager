@@ -49,7 +49,7 @@ namespace SistemaDeInventarioWinForms
                 return;
             }
 
-            inventario.ActualizarProducto(nombre, cantidad, precio, producto.Id);
+           
             MessageBox.Show("Producto actualizado correctamente.");
             this.Close();
         }

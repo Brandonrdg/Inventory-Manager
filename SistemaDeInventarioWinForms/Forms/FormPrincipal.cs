@@ -4,14 +4,13 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 
 namespace SistemaDeInventarioWinForms
 {
     public partial class FormPrincipal : Form
     {
-        public Inventario inventario = new Inventario();
+        public readonly Inventario inventario = new Inventario();
 
         private void CargarProductos()
         {
@@ -19,22 +18,7 @@ namespace SistemaDeInventarioWinForms
 
             dgvProductos.DataSource = productos;
 
-            dgvProductos.Columns["Id"].Visible = false;
-
-            dgvProductos.CellFormatting += DgvProductos_CellFormatting;
-
-            dgvProductos.Columns["Cantidad"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dgvProductos.Columns["Precio"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-
-            dgvProductos.Columns["Nombre"].FillWeight = 55;
-
-            dgvProductos.Columns["Cantidad"].FillWeight = 20;
-
-            dgvProductos.Columns["Precio"].FillWeight = 25;
-
-            dgvProductos.Columns["Nombre"].HeaderText = "Producto";
-            dgvProductos.Columns["Cantidad"].HeaderText = "Stock";
-            dgvProductos.Columns["Precio"].HeaderText = "Precio";
+            ConfigurarTemaDataGrid();
 
 
             lblProductos.Text = $"Productos:";
@@ -49,43 +33,10 @@ namespace SistemaDeInventarioWinForms
 
         private void DgvProductos_CellFormatting(object? sender, DataGridViewCellFormattingEventArgs e)
         {
-            if (dgvProductos.Columns[e.ColumnIndex].Name == "Precio" && e.Value != null)
+            if (dgvProductos.Columns[e.ColumnIndex].Name == "Precio" && e.Value is decimal precio)
             {
-                // Si el origen de datos ya proporciona un decimal, formatear directamente.
-                if (e.Value is decimal precioDecimal)
-                {
-                    e.Value = $"₡{precioDecimal:N0}";
-                    e.FormattingApplied = true;
-                    return;
-                }
-
-                // Intentar convertir valores no nulos de forma segura.
-                // Primero intentar Convert (maneja tipos numéricos), y si falla, intentar parsear cadenas estilo moneda.
-                try
-                {
-                    decimal precio = Convert.ToDecimal(e.Value);
-                    e.Value = $"₡{precio:N0}";
-                    e.FormattingApplied = true;
-                    return;
-                }
-                catch (FormatException)
-                {
-                    // Podría ser una cadena ya formateada con símbolo de moneda (ej. "₡44 000").
-                    if (decimal.TryParse(
-                        e.Value.ToString(),
-                        System.Globalization.NumberStyles.Currency,
-                        System.Globalization.CultureInfo.CurrentCulture,
-                        out decimal parsed))
-                    {
-                        e.Value = $"₡{parsed:N0}";
-                        e.FormattingApplied = true;
-                        return;
-                    }
-                }
-                catch
-                {
-                    // En cualquier otro fallo, no modificar e.Value para evitar excepción.
-                }
+                e.Value = $"₡{precio:N0}";
+                e.FormattingApplied = true;
             }
         }
 
@@ -96,6 +47,8 @@ namespace SistemaDeInventarioWinForms
             ConfigurarTemaDataGrid();
 
             CargarProductos();
+
+            dgvProductos.CellFormatting += DgvProductos_CellFormatting;
 
         }
         private void ConfigurarTemaDataGrid()
@@ -128,32 +81,31 @@ namespace SistemaDeInventarioWinForms
 
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void ConfigurarColumnasDataGrid()
         {
+            dgvProductos.Columns["Id"].Visible = false;
 
+            dgvProductos.Columns["Nombre"].HeaderText = "Producto";
+            dgvProductos.Columns["Cantidad"].HeaderText = "Stock";
+            dgvProductos.Columns["Precio"].HeaderText = "Precio";
+
+            dgvProductos.Columns["Cantidad"].DefaultCellStyle.Alignment =
+                DataGridViewContentAlignment.MiddleCenter;
+
+            dgvProductos.Columns["Precio"].DefaultCellStyle.Alignment =
+                DataGridViewContentAlignment.MiddleRight;
+
+            dgvProductos.Columns["Nombre"].FillWeight = 55;
+            dgvProductos.Columns["Cantidad"].FillWeight = 20;
+            dgvProductos.Columns["Precio"].FillWeight = 25;
         }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-
-        private void btnBuscar_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             FormAgregarProductosModerno formulario = new FormAgregarProductosModerno();
-            formulario.ShowDialog();
-            CargarProductos();
+            if (formulario.ShowDialog() == DialogResult.OK)
+            {
+                CargarProductos();
+            }
         }
         private void btnEditar_Click(object sender, EventArgs e)
         {
@@ -196,24 +148,10 @@ namespace SistemaDeInventarioWinForms
             }
 
             FormEliminarModerno formulario = new FormEliminarModerno(producto);
-            formulario.ShowDialog();
-
-            CargarProductos();
-        }
-
-        private void button5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void guna2TextBox1_TextChanged(object sender, EventArgs e)
-        {
-
+            if (formulario.ShowDialog() == DialogResult.OK)
+            {
+                CargarProductos();
+            }
         }
         private void txtBuscar_TextChanged(object sender, EventArgs e)
         {
@@ -223,27 +161,6 @@ namespace SistemaDeInventarioWinForms
                 ? inventario.ObtenerProductos()
                 : inventario.BuscarProductos(filtro);
         }
-
-        private void lblProductos_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblValor_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void TxtVersion_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblStockTotal_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void FormPrincipal_Shown(object sender, EventArgs e)
         {
             dgvProductos.ClearSelection();

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 
 namespace SistemaDeInventarioWinForms.Forms
@@ -16,11 +15,6 @@ namespace SistemaDeInventarioWinForms.Forms
         {
             InitializeComponent();
         }
-
-        private void FormAgregarProductos_Load(object sender, EventArgs e) { }
-
-        private void txtNombre_TextChanged(object sender, EventArgs e) { }
-
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             string nombre = txtNombre.Text.Trim();
@@ -39,7 +33,7 @@ namespace SistemaDeInventarioWinForms.Forms
                 return;
             }
 
-            if (!float.TryParse(precioText, out float precio) || precio < 0f)
+            if (!decimal.TryParse(precioText, out decimal precio) || precio < 0m)
             {
                 MessageBox.Show("Por favor, ingrese un precio válido mayor o igual a 0.");
                 return;
@@ -48,6 +42,8 @@ namespace SistemaDeInventarioWinForms.Forms
             inventario.AgregarProducto(nombre, cantidad, precio);
 
             MessageBox.Show("Producto agregado correctamente.");
+
+            DialogResult = DialogResult.OK;
 
             Close();
         }
