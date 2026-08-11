@@ -32,15 +32,15 @@ The application allows users to manage products through a simple and modern inte
 
 ### Add product
 
-![Add product](screenshots/add-product.png)
+![Add product](SistemaDeInventarioWinForms/screenshots/add-product.png)
 
 ### Edit product
 
-![Edit product](screenshots/edit-product.png)
+![Edit product](SistemaDeInventarioWinForms/screenshots/edit-product.png)
 
 ### Delete product
 
-![Delete product](screenshots/delete-product.png)
+![Delete product](SistemaDeInventarioWinForms/screenshots/delete-product.png)
 
 ## Project Structure
 
