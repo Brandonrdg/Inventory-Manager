@@ -28,7 +28,7 @@ The application allows users to manage products through a simple and modern inte
 
 ### Main Interface
 
-![Main interface](screenshots/MainIterface.png)
+![Main interface](SistemaDeInventarioWinForms/screenshots/MainIterface.png)
 
 ### Add product
 
